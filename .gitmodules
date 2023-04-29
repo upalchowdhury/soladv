@@ -1,0 +1,3 @@
+[submodule "lib/erc1363-payable-token"]
+	path = lib/erc1363-payable-token
+	url = https://github.com/vittominacori/erc1363-payable-token
