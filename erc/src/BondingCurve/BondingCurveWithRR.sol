@@ -1,3 +1,5 @@
+// TODO
+
 //property of power functions is that we can define our bonding curve in terms of a reserve ratio. Reserve ratio is defined by the relationship between token price, token supply and poolBalance.
 
 reserveRatio = poolBalance / (currentPrice * tokenSupply)
