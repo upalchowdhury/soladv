@@ -1,8 +1,21 @@
-// TODO
+// SPDX-License-Identifier: MIT
+pragma solidity ^0.8.0;
 
-//property of power functions is that we can define our bonding curve in terms of a reserve ratio. Reserve ratio is defined by the relationship between token price, token supply and poolBalance.
+import "@openzeppelin-contracts/contracts/utils/math/SafeMath.sol";
+import "erc1363/contracts/token/ERC1363/ERC1363.sol";
+import "erc1363/contracts/token/ERC1363/IERC1363.sol";
+import "solmate/src/utils/FixedPointMathLib.sol";
+import "solmate/src/utils/ReentrancyGuard.sol";
 
-reserveRatio = poolBalance / (currentPrice * tokenSupply)
+                      
+                      // TODO
+
+/**
+ * property of power functions is that we can define our bonding curve in terms of a reserve ratio. 
+Reserve ratio is defined by the relationship between token price, token supply and poolBalance.
+*/
+
+reserveRatio = poolBalance / (currentPrice * tokenSupply);
 
 
 

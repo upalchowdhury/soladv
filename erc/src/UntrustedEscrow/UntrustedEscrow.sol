@@ -1,11 +1,12 @@
 pragma solidity ^0.8.0;
 
-
-import "@openzeppelin/contracts/utils/math/SafeMath.sol";
+import "@openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
+import "@openzeppelin-contracts/contracts/utils/math/SafeMath.sol";
 import "solmate/src/utils/ReentrancyGuard.sol";
 import "@openzeppelin-contracts/contracts/token/ERC20/utils/SafeERC20.sol";
 
-contract SaferUntrustedEscrow is ReentrancyGuard {
+
+contract SaferUntrustedEscrow is IERC20, ReentrancyGuard {
     using SafeMath for uint256;
     using SafeERC20 for IERC20;
 

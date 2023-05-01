@@ -3,7 +3,7 @@ pragma solidity ^0.8.0;
 
 import "@openzeppelin-contracts/contracts/utils/math/SafeMath.sol";
 import "erc1363/contracts/token/ERC1363/ERC1363.sol";
-import "erc1363/contracts/token/ERC1363IERC1363.sol";
+import "erc1363/contracts/token/ERC1363/IERC1363.sol";
 import "solmate/src/utils/FixedPointMathLib.sol";
 import "solmate/src/utils/ReentrancyGuard.sol";
 
