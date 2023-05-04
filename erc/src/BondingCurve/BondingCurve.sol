@@ -28,7 +28,7 @@ uint256 public poolBalance = 0;
 
 
 // totalSupply
-uint256 public totalSupply;
+//uint256 public totalSupply;
 
 
 //reseve token
@@ -39,7 +39,7 @@ event Burned(uint256 amount, uint256 refundAM);
 
 
     constructor(ERC1363 _token)  {
-        reserveAmount = _token;
+        reserveToken = _token;
     }
 
 
@@ -58,8 +58,8 @@ event Burned(uint256 amount, uint256 refundAM);
    * @return  finalPrice
    */
   function getSellPrice(uint256 tokenAmount) public view returns(uint) {
-    require(totalSupply_ >= tokenAmount);
-    uint256 totalTokens = totalSupply_ - tokenAmount;
+    require(totalSupply >= tokenAmount);
+    uint256 totalTokens = totalSupply - tokenAmount;
     uint256 m = multiple;
     uint256 d = dec;
     uint256 finalPrice = poolBalance - m * totalTokens * totalTokens / ( 2 * d * d ); // integration of  y = mx
@@ -86,7 +86,7 @@ event Burned(uint256 amount, uint256 refundAM);
         require(balances[msg.sender] >= numTokens);
 
         uint256 ethToReturn = getSellPrice(numTokens);
-        totalSupply_ = totalSupply.sub(numTokens);
+        totalSupply = totalSupply.sub(numTokens);
         balances[msg.sender] = balances[msg.sender].sub(numTokens);
         poolBalance = poolBalance.sub(ethToReturn);
         transferAndCall(msg.sender,ethToReturn);

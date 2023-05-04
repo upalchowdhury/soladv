@@ -50,7 +50,7 @@ contract ContractTest is Test {
 
     function testBan() public {
         token.ban(alice);
-        assertEq(token.banned[alice],true);
+        assertEq(token.getBanned(alice),true);
     }
 
     function testFailMint() public {
@@ -74,7 +74,7 @@ contract ContractTest is Test {
     }
 
     function testTransferFrom() external {
-        testMint()
+        testMint();
         vm.prank(notsanctioned1);
         token.approve(address(this), 1e18);
         assertTrue(token.transferFrom(notsanctioned1,bob, 0.7e18));
