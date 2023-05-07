@@ -21,7 +21,8 @@ contract NFTCollection is ERC721Enumerable {
      
         return newTokenId;
     }
-
+// meetbits
+//uint index = uint(keccak256(abi.encodePacked(nonce, msg.sender, block.difficulty, block.timestamp))) % totalSize;
 //     function generateRandomNumber() internal view returns (uint256) {
 //         uint256 randomNumber = uint256(keccak256(abi.encodePacked(blockhash(block.number - 1), block.timestamp)));
 //         return (randomNumber % 20) + 1;
