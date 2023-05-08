@@ -1,0 +1,55 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+remappings = ["@openzeppelin-contracts/=lib/openzeppelin-contracts/","@openzeppelin/=lib/openzeppelin-contracts/","solmate/=lib/solmate","erc1363/=lib/erc1363-payable-token"]
+sender = '0x00a329c0648769a73afac7f9381e08fb43dbea72'         # the address of `msg.sender` in tests
+tx_origin = '0x00a329c0648769a73afac7f9381e08fb43dbea72'      # the address of `tx.origin` in tests
+
+
+[fuzz]
+runs = 256
+max_test_rejects = 65536
+seed = '0x3e8'
+dictionary_weight = 40
+include_storage = true
+include_push_bytes = true
+
+[invariant]
+runs = 256
+depth = 15
+fail_on_revert = false
+call_override = false
+dictionary_weight = 80
+include_storage = true
+include_push_bytes = true
+
+[fmt]
+line_length = 100
+tab_width = 2
+bracket_spacing = true
+
+[profile.default.optimizer_details]
+constantOptimizer = true
+yul = true
+# this sets the `yulDetails` of the `optimizer_details` for the `default` profile
+[profile.default.optimizer_details.yulDetails]
+stackAllocation = true
+optimizerSteps = 'dhfoDgvulfnTUtnIf'
+
+
+[etherscan]
+mainnet = { key = "${ETHERSCAN_API_KEY}" }
+sepolia = {key = "${ETHERSCAN_API_KEY}"}
+mainnet2 = { key = "ABCDEFG", chain = "mainnet" }
+optimism = { key = "1234576" }
+unknownchain = { key = "ABCDEFG", url = "https://<etherscan-api-url-for-that-chain>" }
+
+[rpc_endpoints]
+sepolia = "${SEPOLIA_RPC_URL}"
+optimism = "https://optimism.alchemyapi.io/v2/1234567"
+mainnet = "${RPC_MAINNET}"
+goerli = "https://eth-goerli.alchemyapi.io/v2/${GOERLI_API_KEY}"
+
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config

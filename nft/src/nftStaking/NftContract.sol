@@ -11,53 +11,6 @@ import "@openzeppelin/contracts/token/ERC721/extensions/IERC721Metadata.sol";
 import "@openzeppelin/contracts/token/ERC721/extensions/ERC721Royalty.sol";
 import "@openzeppelin/contracts/utils/math/SafeMath.sol";
 
-//openzeppelin-contracts/contracts/token/ERC721/extensions/ERC721Royalty.sol
-//import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC20/ERC20.sol";
-
-// contract DiscountNFT is ERC721, IERC2981 {
-//     bytes32 public merkleRoot;
-//     BitMaps.BitMap internal claimedMap;
-
-//     uint256 public constant ROYALTY_PERCENTAGE = 250; // 2.5% royalty
-
-//     constructor(string memory name, string memory symbol, bytes32 _merkleRoot) ERC721(name, symbol) {
-//         merkleRoot = _merkleRoot;
-//     }
-
-//     function mintWithDiscount(uint256 tokenId, address recipient, uint256 discount, bytes32[] calldata merkleProof) external {
-//         require(!claimedMap.get(tokenId), "Token already claimed");
-//         require(verifyDiscount(tokenId, discount, merkleProof), "Invalid discount or proof");
-
-//         claimedMap.set(tokenId, true);
-//         _safeMint(recipient, tokenId);
-//     }
-
-//     function verifyDiscount(uint256 tokenId, uint256 discount, bytes32[] calldata merkleProof) public view returns (bool) {
-//         bytes32 leaf = keccak256(abi.encodePacked(tokenId, discount));
-//         return MerkleProof.verify(merkleProof, merkleRoot, leaf);
-//     }
-
-//     function royaltyInfo(uint256 tokenId, uint256 salePrice) external view override returns (address receiver, uint256 royaltyAmount) {
-//         return (owner(), (salePrice * ROYALTY_PERCENTAGE) / 10000);
-//     }
-
-//     function supportsInterface(bytes4 interfaceId) public view override(ERC721, IERC165, IERC2981) returns (bool) {
-//         return interfaceId == type(IERC2981).interfaceId || super.supportsInterface(interfaceId);
-//     }
-// }
-
-// contract RewardToken is ERC20 {
-//     address public owner;
-
-//     constructor(string memory name, string memory symbol, address _owner) ERC20(name, symbol) {
-//         owner = _owner;
-//     }
-
-//     function mint(address to, uint256 amount) external {
-//         require(msg.sender == owner, "Not authorized");
-//         _mint(to, amount);
-//     }
-// }
 
 contract DiscountedNFT is ERC721, IERC2981 {
     using SafeMath for uint256;
@@ -111,38 +64,46 @@ contract DiscountedNFT is ERC721, IERC2981 {
     
 }
 
+/**
+ *                  Adapted from Uniswap v2 and used as refference
+ * 
+ * 
+ * 
+ * 
+ * 
+ * 
+ */
+// function isClaimed(uint256 index) public view override returns (bool) {
+//         uint256 claimedWordIndex = index / 256;
+//         uint256 claimedBitIndex = index % 256;
+//         uint256 claimedWord = claimedBitMap[claimedWordIndex];
+//         uint256 mask = (1 << claimedBitIndex);
+//         return claimedWord & mask == mask;
+//     }
 
-function isClaimed(uint256 index) public view override returns (bool) {
-        uint256 claimedWordIndex = index / 256;
-        uint256 claimedBitIndex = index % 256;
-        uint256 claimedWord = claimedBitMap[claimedWordIndex];
-        uint256 mask = (1 << claimedBitIndex);
-        return claimedWord & mask == mask;
-    }
+// function _setClaimed(uint256 index) private {
+//         uint256 claimedWordIndex = index / 256;
+//         uint256 claimedBitIndex = index % 256;
+//         claimedBitMap[claimedWordIndex] = claimedBitMap[claimedWordIndex] | (1 << claimedBitIndex);
+//     }
 
-function _setClaimed(uint256 index) private {
-        uint256 claimedWordIndex = index / 256;
-        uint256 claimedBitIndex = index % 256;
-        claimedBitMap[claimedWordIndex] = claimedBitMap[claimedWordIndex] | (1 << claimedBitIndex);
-    }
+// function claim(uint256 index, address account, uint256 amount, bytes32[] calldata merkleProof)
+//         public
+//         virtual
+//         override
+//     {
+//         if (isClaimed(index)) revert AlreadyClaimed();
 
-function claim(uint256 index, address account, uint256 amount, bytes32[] calldata merkleProof)
-        public
-        virtual
-        override
-    {
-        if (isClaimed(index)) revert AlreadyClaimed();
+//         // Verify the merkle proof.
+//         bytes32 node = keccak256(abi.encodePacked(index, account, amount));
+//         if (!MerkleProof.verify(merkleProof, merkleRoot, node)) revert InvalidProof();
 
-        // Verify the merkle proof.
-        bytes32 node = keccak256(abi.encodePacked(index, account, amount));
-        if (!MerkleProof.verify(merkleProof, merkleRoot, node)) revert InvalidProof();
+//         // Mark it claimed and send the token.
+//         _setClaimed(index);
+//         IERC20(token).safeTransfer(account, amount);
 
-        // Mark it claimed and send the token.
-        _setClaimed(index);
-        IERC20(token).safeTransfer(account, amount);
-
-        emit Claimed(index, account, amount);
-    }
+//         emit Claimed(index, account, amount);
+//     }
 
 
 //super.myFunction(myArray);
