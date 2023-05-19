@@ -45,10 +45,10 @@ contract DiscountedNFT is ERC721, IERC2981 {
         discountPercentage = _discountPercentage;
     }
 
-        bytes32 hash1 = 0x7a6be8e1b5d59c07e6c707090a85910bb3d4c41d7faa36f2e1dd61e1c30a8de2;
-        bytes32 hash2 = 0xfce9e1c4de5a5929290a3c5162f7d93faa0479ec9b24570d763711b7298ecf14;
-        bytes32 hash3 = 0x4b0db8b02ed7034d68810b8d82c616524beaf3722d7cf1627342253e5a630a20;
-        bytes32[] public hashes = [hash1,hash2,hash3];
+    bytes32 hash1 = 0x7a6be8e1b5d59c07e6c707090a85910bb3d4c41d7faa36f2e1dd61e1c30a8de2;
+    bytes32 hash2 = 0xfce9e1c4de5a5929290a3c5162f7d93faa0479ec9b24570d763711b7298ecf14;
+    bytes32 hash3 = 0x4b0db8b02ed7034d68810b8d82c616524beaf3722d7cf1627342253e5a630a20;
+    bytes32[] public hashes = [hash1,hash2,hash3];
 
 
     function _merkleProof() internal view returns (bytes32[] memory){
@@ -183,24 +183,7 @@ function listAllTokenOwners() public view returns (address[] memory) {
         return owners;
     }
 
-    // function setApprovalForAll(address operator, bool approved) public override {
-    //     isApprovedForAll[msg.sender][operator] = approved;
-    //     emit ApprovalForAll(msg.sender, operator, approved);
-    // }
-
-    // function approve(address spender, uint id) public virtual override {
-    //     address owner = _ownerOf[id];
-    //     require(
-    //         msg.sender == owner || isApprovedForAll[owner][msg.sender],
-    //         "not authorized"
-    //     );
-
-    //     _approvals[id] = spender;
-
-    //     emit Approval(owner, spender, id);
-    // }
-
-
+    
 
 
 

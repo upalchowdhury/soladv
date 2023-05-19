@@ -7,6 +7,7 @@ import "../src/NftContract.sol";
 import "../src/NftStaking.sol";
 import "../src/RewardToken";
 
+import {Handler} from "./Handler.sol";
 
 contract ContractTest is Test {
 
