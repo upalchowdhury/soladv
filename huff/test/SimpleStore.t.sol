@@ -1,29 +1,46 @@
-// SPDX-License-Identifier: Unlicense
-pragma solidity ^0.8.15;
+// SPDX-License-Identifier: BUSL-1.1
+pragma solidity ^0.8.13;
 
-import "foundry-huff/HuffDeployer.sol";
 import "forge-std/Test.sol";
-import "forge-std/console.sol";
-
-contract SimpleStoreTest is Test {
-    /// @dev Address of the SimpleStore contract.
-    SimpleStore public simpleStore;
-
-    /// @dev Setup the testing environment.
-    function setUp() public {
-        simpleStore = SimpleStore(HuffDeployer.deploy("SimpleStore"));
-    }
-
-    /// @dev Ensure that you can set and get the value.
-    function testSetAndGetValue(uint256 value) public {
-        simpleStore.setValue(value);
-        console.log(value);
-        console.log(simpleStore.getValue());
-        assertEq(value, simpleStore.getValue());
-    }
-}
+import {HuffConfig} from "foundry-huff/HuffConfig.sol";
+import {HuffDeployer} from "foundry-huff/HuffDeployer.sol";
+import {NonMatchingSelectorHelper} from "./test-utils/NonMatchingSelectorHelper.sol";
 
 interface SimpleStore {
-    function setValue(uint256) external;
-    function getValue() external returns (uint256);
+    function store(uint256 num) external;
+
+    function read() external view returns (uint256);
+}
+
+contract SimpleStoreTest is Test, NonMatchingSelectorHelper {
+    SimpleStore public simpleStore;
+
+    function setUp() public {
+        simpleStore = SimpleStore(HuffDeployer.config().deploy("SimpleStore"));
+    }
+
+    function testSimpleStore() public {
+        simpleStore.store(42);
+        assertEq(simpleStore.read(), 42, "read() expected to return 42");
+
+        simpleStore.store(24);
+        assertEq(simpleStore.read(), 24, "read() expected to return 24");
+
+        simpleStore.store(0);
+        assertEq(simpleStore.read(), 0, "read() expected to return 0");
+    }
+
+    /// @notice Test that a non-matching selector reverts
+    function testNonMatchingSelector(bytes32 callData) public {
+        bytes4[] memory func_selectors = new bytes4[](2);
+        func_selectors[0] = SimpleStore.store.selector;
+        func_selectors[1] = SimpleStore.read.selector;
+
+        bool success = nonMatchingSelectorHelper(
+            func_selectors,
+            callData,
+            address(simpleStore)
+        );
+        assert(!success);
+    }
 }
