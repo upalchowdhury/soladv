@@ -18,7 +18,7 @@
     // jump to the implementation
      dup1 __FUNC_SIG(add1) eq add1 jumpi
 
-    0x00 dup1 revert
+    0x00 dup1 revert // revert if function not found
 
     // dispatcher
     add1:
@@ -27,8 +27,8 @@
 }
 #define macro ADD1() = takes(0) returns(0) {
         
-        0x04 calldataload
-        0x01
+        0x04 calldataload // read after the function selector
+        0x01 // put no. 1 on Stack
         add
 
         0x00 mstore
