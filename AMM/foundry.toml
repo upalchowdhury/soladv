@@ -1,0 +1,18 @@
+[profile.default]
+src = "src"
+out = "out"
+libs = ["lib"]
+remappings = ["@openzeppelin-contracts/=lib/openzeppelin-contracts/","@openzeppelin/=lib/openzeppelin-contracts/","solmate/=lib/solmate","erc1363/=lib/erc1363-payable-token"]
+sender = '0x00a329c0648769a73afac7f9381e08fb43dbea72'         # the address of `msg.sender` in tests
+tx_origin = '0x00a329c0648769a73afac7f9381e08fb43dbea72'      # the address of `tx.origin` in tests
+
+
+[etherscan]
+mainnet = { key = "${ETHERSCAN_API_KEY}" }
+sepolia = {key = "${ETHERSCAN_API_KEY}"}
+
+[rpc_endpoints]
+sepolia = "${SEPOLIA_RPC_URL}"
+
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config

@@ -7,7 +7,7 @@ from pytypes.contracts.Counter import Counter
 def test_counter():
     default_chain.set_default_accounts(default_chain.accounts[0])
 
-    counter = AMM.deploy()
+    counter = AMM.deploy(0x3123,0x3345)
     assert counter.count() == 0
 
     counter.increment()
