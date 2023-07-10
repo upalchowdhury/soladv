@@ -1114,8 +1114,8 @@
       }
     },
     "src/Amm.sol": {
-      "lastModificationDate": 1688816776438,
-      "contentHash": "cf5b711f602907c9988e2b5016f1bc71",
+      "lastModificationDate": 1688831613631,
+      "contentHash": "cf5ecb88f8b9ee5c839fbef27c212df8",
       "sourceName": "src/Amm.sol",
       "solcConfig": {
         "settings": {
@@ -1158,8 +1158,8 @@
       }
     },
     "test/Amm.t.sol": {
-      "lastModificationDate": 1688829309015,
-      "contentHash": "7f9a9a37f8ef2e41c4f3985ec6bc9296",
+      "lastModificationDate": 1688990046429,
+      "contentHash": "c68e4724e7b8f56c29f44e48ca478ac9",
       "sourceName": "test/Amm.t.sol",
       "solcConfig": {
         "settings": {

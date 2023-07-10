@@ -32,13 +32,13 @@ contract AMM {
         
     }
 
-    function mint (address _to, uint _amount) external {
-        _mint(_to,_amount);
-    }
+    // function mint (address _to, uint _amount) external {
+    //     _mint(_to,_amount);
+    // }
 
-    function burn(address _from, uint _amount) external {
-        _burn(_from, _amount);
-    }
+    // function burn(address _from, uint _amount) external {
+    //     _burn(_from, _amount);
+    // }
 
     function _mint(address _to, uint _amount) private {
         balanceOf[_to] += _amount;

@@ -57,23 +57,68 @@ contract ContractTest is Test {
         assertEq(token0.balanceOf(address(amm)),uint256(1000));
         assertEq(token1.balanceOf(address(amm)),uint256(800));
         vm.stopPrank();
-       
+    }
+
+
+    function testSwap() public {
+
+        // First add liquidity 
+        vm.startPrank(alice_user1);
+        vm.deal(alice_user1,5 ether);
+        token0.approve(address(amm),1000);
+        token1.approve(address(amm),800);
+        amm.addLiquidity(1000,800);
+        assertEq(token0.balanceOf(address(amm)),uint256(1000));
+        assertEq(token1.balanceOf(address(amm)),uint256(800));
+        vm.stopPrank();
+
+        // Swap token1 with token0
+        vm.startPrank(bob_user2);
+        token1.approve(address(amm),500);
+        amm.swap(address(token1), 500);
+        // Calculation based on the reserve (1000 * 498.5) / (800 + 498*5) = ~383
+        assertEq(token0.balanceOf(bob_user2),383);
+        vm.stopPrank();
+
+    }
+
+
+
+    function testSwapFuzz(uint data,uint data2, uint data3) public {
+        data = bound(data,1,10000);
+        data2 = bound(data2,1,2000);
+        data3 = bound(data3,3,800);
+        // First add liquidity 
+        vm.startPrank(alice_user1);
+        vm.deal(alice_user1,5 ether);
+        token0.approve(address(amm),data);
+        token1.approve(address(amm),data2);
+        amm.addLiquidity(data,data2);
+        assertEq(token0.balanceOf(address(amm)),uint256(data));
+        assertEq(token1.balanceOf(address(amm)),uint256(data2));
+        vm.stopPrank();
+
+        //Swap token1 with token0
+        vm.startPrank(bob_user2);
+        token1.approve(address(amm),data3);
+        amm.swap(address(token1), data3);
+        // Calculation based on the reserve (1000 * 498.5) / (800 + 498.5) = ~383
+        uint amountInAfterfee = (data3 * 997)/1000 ;
+        uint amountOut = (data * amountInAfterfee) / (data2 + amountInAfterfee);
+        assertEq(token0.balanceOf(bob_user2),amountOut);
+        vm.stopPrank();
+
     }
 
 
 
 
 
+
+
+
+
     }
 
 
 
-    // function testName() external {
-    //     assertEq("KOIN",token.name());
-    // }
-
-    // function addGodAddress() external {
-    //     vm.prank(alice);
-    //     token.addSpecialAddress(bob);
-    //     assertEq(token.getSpAd(bob),true);
-    // }
