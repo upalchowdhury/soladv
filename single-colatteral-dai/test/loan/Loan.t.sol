@@ -90,16 +90,17 @@ contract Loantest is Test, DSMath {
         gem = new DSToken("GEM");
         gov = new DSToken("GOV");
 
-        // math calculations
+        //  price feeds math calculations
         pip = new DSValue();
         pep = new DSValue();
+        vox = new SaiVox(RAY);
 
         // Admin Role
         dad = new DSGuard();
 
 
 
-        vox = new SaiVox(RAY);
+        
         tub = new SaiTub(sai, sin, skr, gem, gov, pip, pep, vox, GemPit(address(0x123)));
         tap = SaiTap(address(0x456));
         tub.turn(tap);
@@ -117,14 +118,6 @@ contract Loantest is Test, DSMath {
         sai.approve(address(tub));
 
         gem.mint(6 ether);
-
-        //Verify initial token balances
-        assertEq(gem.balanceOf(address(this)), 6 ether);
-        assertEq(gem.balanceOf(address(tub)), 0 ether);
-        assertEq(skr.totalSupply(), 0 ether);
-
-        assert(!tub.off());
-       
         
     }
 
@@ -153,6 +146,94 @@ contract Loantest is Test, DSMath {
         tub.join(5 ether);
         assertEq(skr.totalSupply(), 5 ether);
         assertEq(tub.per(), rdiv(5 ether, 5 ether));
+    }
+
+
+     function testFailTurnAgain() public {
+        tub.turn(SaiTap(address(0x789)));
+    }
+
+    function testTag() public {
+        tub.pip().poke(bytes32(uint256(1 ether)));
+        assertEq(tub.pip().read(), bytes32(uint256(1 ether)));
+        assertEq(wmul(tub.per(), uint(tub.pip().read())), tub.tag());
+        tub.pip().poke(bytes32(uint256(5 ether)));
+        assertEq(tub.pip().read(), bytes32(uint256(5 ether)));
+        assertEq(wmul(tub.per(), uint(tub.pip().read())), tub.tag());
+    }
+
+    function testGap() public {
+        assertEq(tub.gap(), WAD);
+        tub.mold('gap', 2 ether);
+        assertEq(tub.gap(), 2 ether);
+        tub.mold('gap', wmul(WAD, 10 ether));
+        assertEq(tub.gap(), wmul(WAD, 10 ether));
+    }
+
+    function testAsk() public {
+        assertEq(tub.per(), RAY);
+        assertEq(tub.ask(3 ether), rmul(3 ether, wmul(RAY, tub.gap())));
+        assertEq(tub.ask(wmul(WAD, 33)), rmul(wmul(WAD, 33), wmul(RAY, tub.gap())));
+    }
+
+    function testBid() public {
+        assertEq(tub.per(), RAY);
+        assertEq(tub.bid(4 ether), rmul(4 ether, wmul(tub.per(), sub(2 * WAD, tub.gap()))));
+        assertEq(tub.bid(wmul(5 ether,3333333)), rmul(wmul(5 ether,3333333), wmul(tub.per(), sub(2 * WAD, tub.gap()))));
+    }
+
+    function testJoin() public {
+        tub.join(3 ether);
+        assertEq(gem.balanceOf(address(this)), 3 ether);
+        assertEq(gem.balanceOf(address(tub)), 3 ether);
+        assertEq(skr.totalSupply(), 3 ether);
+        tub.join(1 ether);
+        assertEq(gem.balanceOf(address(this)), 2 ether);
+        assertEq(gem.balanceOf(address(tub)), 4 ether);
+        assertEq(skr.totalSupply(), 4 ether);
+    }
+
+    function testExit() public {
+        gem.mint(10 ether);
+        assertEq(gem.balanceOf(address(this)), 16 ether);
+
+        tub.join(12 ether);
+        assertEq(gem.balanceOf(address(tub)), 12 ether);
+        assertEq(gem.balanceOf(address(this)), 4 ether);
+        assertEq(skr.totalSupply(), 12 ether);
+
+        tub.exit(3 ether);
+        assertEq(gem.balanceOf(address(tub)), 9 ether);
+        assertEq(gem.balanceOf(address(this)), 7 ether);
+        assertEq(skr.totalSupply(), 9 ether);
+
+        tub.exit(7 ether);
+        assertEq(gem.balanceOf(address(tub)), 2 ether);
+        assertEq(gem.balanceOf(address(this)), 14 ether);
+        assertEq(skr.totalSupply(), 2 ether);
+    }
+
+    function testCage() public {
+        tub.join(5 ether);
+        assertEq(gem.balanceOf(address(tub)), 5 ether);
+        assertEq(gem.balanceOf(address(this)), 1 ether);
+        assertEq(skr.totalSupply(), 5 ether);
+        assert(!tub.off());
+
+        tub.cage(tub.per(), 5 ether);
+        assertEq(gem.balanceOf(address(tub)), 0 ether);
+        assertEq(gem.balanceOf(address(tap)), 5 ether);
+        assertEq(skr.totalSupply(), 5 ether);
+        assert(tub.off());
+    }
+
+    function testFlow() public {
+        tub.join(1 ether);
+        tub.cage(tub.per(), 1 ether);
+        assert(tub.off());
+        assert(!tub.out());
+        tub.flow();
+        assert(tub.out());
     }
 
 
