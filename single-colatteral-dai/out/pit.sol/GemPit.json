@@ -1,0 +1,453 @@
+{
+  "abi": [
+    {
+      "inputs": [
+        {
+          "internalType": "contract DSToken",
+          "name": "gem",
+          "type": "address"
+        }
+      ],
+      "name": "burn",
+      "outputs": [],
+      "stateMutability": "nonpayable",
+      "type": "function"
+    }
+  ],
+  "bytecode": {
+    "object": "0x608060405234801561001057600080fd5b50610187806100206000396000f3fe608060405234801561001057600080fd5b506004361061002b5760003560e01c806389afcb4414610030575b600080fd5b61004361003e366004610108565b610045565b005b6040516370a0823160e01b81523060048201526001600160a01b038216906342966c689082906370a0823190602401602060405180830381865afa158015610091573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906100b59190610138565b6040518263ffffffff1660e01b81526004016100d391815260200190565b600060405180830381600087803b1580156100ed57600080fd5b505af1158015610101573d6000803e3d6000fd5b5050505050565b60006020828403121561011a57600080fd5b81356001600160a01b038116811461013157600080fd5b9392505050565b60006020828403121561014a57600080fd5b505191905056fea26469706673582212209bb70d4859fd145a305e67aff4327821010fd8e239c9d0ab04fee62baecf1cee64736f6c63430008140033",
+    "sourceMap": "793:113:28:-:0;;;;;;;;;;;;;;;;;;;",
+    "linkReferences": {}
+  },
+  "deployedBytecode": {
+    "object": "0x608060405234801561001057600080fd5b506004361061002b5760003560e01c806389afcb4414610030575b600080fd5b61004361003e366004610108565b610045565b005b6040516370a0823160e01b81523060048201526001600160a01b038216906342966c689082906370a0823190602401602060405180830381865afa158015610091573d6000803e3d6000fd5b505050506040513d601f19601f820116820180604052508101906100b59190610138565b6040518263ffffffff1660e01b81526004016100d391815260200190565b600060405180830381600087803b1580156100ed57600080fd5b505af1158015610101573d6000803e3d6000fd5b5050505050565b60006020828403121561011a57600080fd5b81356001600160a01b038116811461013157600080fd5b9392505050565b60006020828403121561014a57600080fd5b505191905056fea26469706673582212209bb70d4859fd145a305e67aff4327821010fd8e239c9d0ab04fee62baecf1cee64736f6c63430008140033",
+    "sourceMap": "793:113:28:-:0;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;815:89;;;;;;:::i;:::-;;:::i;:::-;;;868:28;;-1:-1:-1;;;868:28:28;;890:4;868:28;;;467:51:35;-1:-1:-1;;;;;859:8:28;;;;;;;868:13;;440:18:35;;868:28:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::i;:::-;859:38;;;;;;;;;;;;;864:25:35;;852:2;837:18;;718:177;859:38:28;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;815:89;:::o;14:302:35:-;89:6;142:2;130:9;121:7;117:23;113:32;110:52;;;158:1;155;148:12;110:52;184:23;;-1:-1:-1;;;;;236:31:35;;226:42;;216:70;;282:1;279;272:12;216:70;305:5;14:302;-1:-1:-1;;;14:302:35:o;529:184::-;599:6;652:2;640:9;631:7;627:23;623:32;620:52;;;668:1;665;658:12;620:52;-1:-1:-1;691:16:35;;529:184;-1:-1:-1;529:184:35:o",
+    "linkReferences": {}
+  },
+  "methodIdentifiers": {
+    "burn(address)": "89afcb44"
+  },
+  "rawMetadata": "{\"compiler\":{\"version\":\"0.8.20+commit.a1b79de6\"},\"language\":\"Solidity\",\"output\":{\"abi\":[{\"inputs\":[{\"internalType\":\"contract DSToken\",\"name\":\"gem\",\"type\":\"address\"}],\"name\":\"burn\",\"outputs\":[],\"stateMutability\":\"nonpayable\",\"type\":\"function\"}],\"devdoc\":{\"kind\":\"dev\",\"methods\":{},\"version\":1},\"userdoc\":{\"kind\":\"user\",\"methods\":{},\"version\":1}},\"settings\":{\"compilationTarget\":{\"src/pit.sol\":\"GemPit\"},\"evmVersion\":\"paris\",\"libraries\":{},\"metadata\":{\"bytecodeHash\":\"ipfs\"},\"optimizer\":{\"enabled\":true,\"runs\":200},\"remappings\":[\":@openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":@openzeppelin/=lib/openzeppelin-contracts/\",\":ds-test/=lib/ds-test/src/\",\":erc1363/=lib/erc1363-payable-token/\",\":forge-std/=lib/forge-std/src/\",\":openzeppelin-contracts/=lib/openzeppelin-contracts/\",\":solady/=lib/solady/src/\",\":solmate/=lib/solmate/\",\":v3-core/=lib/v3-core/contracts/\",\":v3-periphery/=lib/v3-periphery/contracts/\"]},\"sources\":{\"deps/auth.sol\":{\"keccak256\":\"0x17fde1ebe71e649ebda06507092ef1c3e5abc09608f0edab02769e77a68f230d\",\"license\":\"GNU-3\",\"urls\":[\"bzz-raw://dbb11e3b27db1991173eeaa0bd1b6e36ae74e0ac3feb85c363281d56f359e2ce\",\"dweb:/ipfs/QmNxSRX8aWsmBpQ7XniaWekorzaQyTL59egHYstf7uxz55\"]},\"deps/erc20.sol\":{\"keccak256\":\"0xb9e4a66c2f84c8237c6adda8463ba285d3b27258221ea34af1297d276c7eac8f\",\"urls\":[\"bzz-raw://24c07aad11be0918f7b112045b1bb845a81d8cd2d42448e5017af8f000c89038\",\"dweb:/ipfs/QmYKMksSy67ghNyvm1eLEqVxqAPUwRpnNizyXMsjsRTTbF\"]},\"deps/math.sol\":{\"keccak256\":\"0xeebd9f7cdf29bcf8ee12a564786be164a17c3ab2225eda64410c86a82c6dee7e\",\"urls\":[\"bzz-raw://9d3c6137475afd84c98acd53d9cef4795adfc1d9c75e819d8b10af2cd1491412\",\"dweb:/ipfs/QmdJQtTbq2X69KE7UDzFb5PvhgkQtmwDqWrcaqf3dduwzb\"]},\"deps/token.sol\":{\"keccak256\":\"0x69b855ce8001782514f7cb5ba6a38ebe61133aea4258dbdac95748e34a04ac87\",\"urls\":[\"bzz-raw://c0e199948f9f22a269fce675447b17d6fbc25611152631f3e3cea2909f6130f6\",\"dweb:/ipfs/QmfJry5N55EX5YDsDtHrGakVNr4DDM8ips4nziyVwVVBDv\"]},\"src/pit.sol\":{\"keccak256\":\"0x3d46b1e57021d6d6e742c588596c77113ef439daf027c487271baf7b9b54c592\",\"urls\":[\"bzz-raw://42163a10d276c66d36c76229cfb88fb58a6be96c655c43bd88a7e6884f40b4b9\",\"dweb:/ipfs/QmNuPQsePxQ24Wa2ZpxHirfHpLr8SM8wLbNYsgsUAhihEf\"]}},\"version\":1}",
+  "metadata": {
+    "compiler": {
+      "version": "0.8.20+commit.a1b79de6"
+    },
+    "language": "Solidity",
+    "output": {
+      "abi": [
+        {
+          "inputs": [
+            {
+              "internalType": "contract DSToken",
+              "name": "gem",
+              "type": "address"
+            }
+          ],
+          "stateMutability": "nonpayable",
+          "type": "function",
+          "name": "burn"
+        }
+      ],
+      "devdoc": {
+        "kind": "dev",
+        "methods": {},
+        "version": 1
+      },
+      "userdoc": {
+        "kind": "user",
+        "methods": {},
+        "version": 1
+      }
+    },
+    "settings": {
+      "remappings": [
+        ":@openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":@openzeppelin/=lib/openzeppelin-contracts/",
+        ":ds-test/=lib/ds-test/src/",
+        ":erc1363/=lib/erc1363-payable-token/",
+        ":forge-std/=lib/forge-std/src/",
+        ":openzeppelin-contracts/=lib/openzeppelin-contracts/",
+        ":solady/=lib/solady/src/",
+        ":solmate/=lib/solmate/",
+        ":v3-core/=lib/v3-core/contracts/",
+        ":v3-periphery/=lib/v3-periphery/contracts/"
+      ],
+      "optimizer": {
+        "enabled": true,
+        "runs": 200
+      },
+      "metadata": {
+        "bytecodeHash": "ipfs"
+      },
+      "compilationTarget": {
+        "src/pit.sol": "GemPit"
+      },
+      "libraries": {}
+    },
+    "sources": {
+      "deps/auth.sol": {
+        "keccak256": "0x17fde1ebe71e649ebda06507092ef1c3e5abc09608f0edab02769e77a68f230d",
+        "urls": [
+          "bzz-raw://dbb11e3b27db1991173eeaa0bd1b6e36ae74e0ac3feb85c363281d56f359e2ce",
+          "dweb:/ipfs/QmNxSRX8aWsmBpQ7XniaWekorzaQyTL59egHYstf7uxz55"
+        ],
+        "license": "GNU-3"
+      },
+      "deps/erc20.sol": {
+        "keccak256": "0xb9e4a66c2f84c8237c6adda8463ba285d3b27258221ea34af1297d276c7eac8f",
+        "urls": [
+          "bzz-raw://24c07aad11be0918f7b112045b1bb845a81d8cd2d42448e5017af8f000c89038",
+          "dweb:/ipfs/QmYKMksSy67ghNyvm1eLEqVxqAPUwRpnNizyXMsjsRTTbF"
+        ],
+        "license": null
+      },
+      "deps/math.sol": {
+        "keccak256": "0xeebd9f7cdf29bcf8ee12a564786be164a17c3ab2225eda64410c86a82c6dee7e",
+        "urls": [
+          "bzz-raw://9d3c6137475afd84c98acd53d9cef4795adfc1d9c75e819d8b10af2cd1491412",
+          "dweb:/ipfs/QmdJQtTbq2X69KE7UDzFb5PvhgkQtmwDqWrcaqf3dduwzb"
+        ],
+        "license": null
+      },
+      "deps/token.sol": {
+        "keccak256": "0x69b855ce8001782514f7cb5ba6a38ebe61133aea4258dbdac95748e34a04ac87",
+        "urls": [
+          "bzz-raw://c0e199948f9f22a269fce675447b17d6fbc25611152631f3e3cea2909f6130f6",
+          "dweb:/ipfs/QmfJry5N55EX5YDsDtHrGakVNr4DDM8ips4nziyVwVVBDv"
+        ],
+        "license": null
+      },
+      "src/pit.sol": {
+        "keccak256": "0x3d46b1e57021d6d6e742c588596c77113ef439daf027c487271baf7b9b54c592",
+        "urls": [
+          "bzz-raw://42163a10d276c66d36c76229cfb88fb58a6be96c655c43bd88a7e6884f40b4b9",
+          "dweb:/ipfs/QmNuPQsePxQ24Wa2ZpxHirfHpLr8SM8wLbNYsgsUAhihEf"
+        ],
+        "license": null
+      }
+    },
+    "version": 1
+  },
+  "ast": {
+    "absolutePath": "src/pit.sol",
+    "id": 32529,
+    "exportedSymbols": {
+      "DSAuth": [
+        144
+      ],
+      "DSAuthEvents": [
+        22
+      ],
+      "DSAuthority": [
+        13
+      ],
+      "DSMath": [
+        808
+      ],
+      "DSToken": [
+        1699
+      ],
+      "ERC20": [
+        216
+      ],
+      "ERC20Events": [
+        163
+      ],
+      "GemPit": [
+        32528
+      ]
+    },
+    "nodeType": "SourceUnit",
+    "src": "739:168:28",
+    "nodes": [
+      {
+        "id": 32507,
+        "nodeType": "PragmaDirective",
+        "src": "739:23:28",
+        "nodes": [],
+        "literals": [
+          "solidity",
+          "0.8",
+          ".20"
+        ]
+      },
+      {
+        "id": 32508,
+        "nodeType": "ImportDirective",
+        "src": "764:27:28",
+        "nodes": [],
+        "absolutePath": "deps/token.sol",
+        "file": "../deps/token.sol",
+        "nameLocation": "-1:-1:-1",
+        "scope": 32529,
+        "sourceUnit": 1700,
+        "symbolAliases": [],
+        "unitAlias": ""
+      },
+      {
+        "id": 32528,
+        "nodeType": "ContractDefinition",
+        "src": "793:113:28",
+        "nodes": [
+          {
+            "id": 32527,
+            "nodeType": "FunctionDefinition",
+            "src": "815:89:28",
+            "nodes": [],
+            "body": {
+              "id": 32526,
+              "nodeType": "Block",
+              "src": "849:55:28",
+              "nodes": [],
+              "statements": [
+                {
+                  "expression": {
+                    "arguments": [
+                      {
+                        "arguments": [
+                          {
+                            "arguments": [
+                              {
+                                "id": 32521,
+                                "name": "this",
+                                "nodeType": "Identifier",
+                                "overloadedDeclarations": [],
+                                "referencedDeclaration": -28,
+                                "src": "890:4:28",
+                                "typeDescriptions": {
+                                  "typeIdentifier": "t_contract$_GemPit_$32528",
+                                  "typeString": "contract GemPit"
+                                }
+                              }
+                            ],
+                            "expression": {
+                              "argumentTypes": [
+                                {
+                                  "typeIdentifier": "t_contract$_GemPit_$32528",
+                                  "typeString": "contract GemPit"
+                                }
+                              ],
+                              "id": 32520,
+                              "isConstant": false,
+                              "isLValue": false,
+                              "isPure": true,
+                              "lValueRequested": false,
+                              "nodeType": "ElementaryTypeNameExpression",
+                              "src": "882:7:28",
+                              "typeDescriptions": {
+                                "typeIdentifier": "t_type$_t_address_$",
+                                "typeString": "type(address)"
+                              },
+                              "typeName": {
+                                "id": 32519,
+                                "name": "address",
+                                "nodeType": "ElementaryTypeName",
+                                "src": "882:7:28",
+                                "typeDescriptions": {}
+                              }
+                            },
+                            "id": 32522,
+                            "isConstant": false,
+                            "isLValue": false,
+                            "isPure": false,
+                            "kind": "typeConversion",
+                            "lValueRequested": false,
+                            "nameLocations": [],
+                            "names": [],
+                            "nodeType": "FunctionCall",
+                            "src": "882:13:28",
+                            "tryCall": false,
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          }
+                        ],
+                        "expression": {
+                          "argumentTypes": [
+                            {
+                              "typeIdentifier": "t_address",
+                              "typeString": "address"
+                            }
+                          ],
+                          "expression": {
+                            "id": 32517,
+                            "name": "gem",
+                            "nodeType": "Identifier",
+                            "overloadedDeclarations": [],
+                            "referencedDeclaration": 32511,
+                            "src": "868:3:28",
+                            "typeDescriptions": {
+                              "typeIdentifier": "t_contract$_DSToken_$1699",
+                              "typeString": "contract DSToken"
+                            }
+                          },
+                          "id": 32518,
+                          "isConstant": false,
+                          "isLValue": false,
+                          "isPure": false,
+                          "lValueRequested": false,
+                          "memberLocation": "872:9:28",
+                          "memberName": "balanceOf",
+                          "nodeType": "MemberAccess",
+                          "referencedDeclaration": 1248,
+                          "src": "868:13:28",
+                          "typeDescriptions": {
+                            "typeIdentifier": "t_function_external_view$_t_address_$returns$_t_uint256_$",
+                            "typeString": "function (address) view external returns (uint256)"
+                          }
+                        },
+                        "id": 32523,
+                        "isConstant": false,
+                        "isLValue": false,
+                        "isPure": false,
+                        "kind": "functionCall",
+                        "lValueRequested": false,
+                        "nameLocations": [],
+                        "names": [],
+                        "nodeType": "FunctionCall",
+                        "src": "868:28:28",
+                        "tryCall": false,
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      }
+                    ],
+                    "expression": {
+                      "argumentTypes": [
+                        {
+                          "typeIdentifier": "t_uint256",
+                          "typeString": "uint256"
+                        }
+                      ],
+                      "expression": {
+                        "id": 32514,
+                        "name": "gem",
+                        "nodeType": "Identifier",
+                        "overloadedDeclarations": [],
+                        "referencedDeclaration": 32511,
+                        "src": "859:3:28",
+                        "typeDescriptions": {
+                          "typeIdentifier": "t_contract$_DSToken_$1699",
+                          "typeString": "contract DSToken"
+                        }
+                      },
+                      "id": 32516,
+                      "isConstant": false,
+                      "isLValue": false,
+                      "isPure": false,
+                      "lValueRequested": false,
+                      "memberLocation": "863:4:28",
+                      "memberName": "burn",
+                      "nodeType": "MemberAccess",
+                      "referencedDeclaration": 1533,
+                      "src": "859:8:28",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_function_external_nonpayable$_t_uint256_$returns$__$",
+                        "typeString": "function (uint256) external"
+                      }
+                    },
+                    "id": 32524,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "kind": "functionCall",
+                    "lValueRequested": false,
+                    "nameLocations": [],
+                    "names": [],
+                    "nodeType": "FunctionCall",
+                    "src": "859:38:28",
+                    "tryCall": false,
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_tuple$__$",
+                      "typeString": "tuple()"
+                    }
+                  },
+                  "id": 32525,
+                  "nodeType": "ExpressionStatement",
+                  "src": "859:38:28"
+                }
+              ]
+            },
+            "functionSelector": "89afcb44",
+            "implemented": true,
+            "kind": "function",
+            "modifiers": [],
+            "name": "burn",
+            "nameLocation": "824:4:28",
+            "parameters": {
+              "id": 32512,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 32511,
+                  "mutability": "mutable",
+                  "name": "gem",
+                  "nameLocation": "837:3:28",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 32527,
+                  "src": "829:11:28",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_contract$_DSToken_$1699",
+                    "typeString": "contract DSToken"
+                  },
+                  "typeName": {
+                    "id": 32510,
+                    "nodeType": "UserDefinedTypeName",
+                    "pathNode": {
+                      "id": 32509,
+                      "name": "DSToken",
+                      "nameLocations": [
+                        "829:7:28"
+                      ],
+                      "nodeType": "IdentifierPath",
+                      "referencedDeclaration": 1699,
+                      "src": "829:7:28"
+                    },
+                    "referencedDeclaration": 1699,
+                    "src": "829:7:28",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_contract$_DSToken_$1699",
+                      "typeString": "contract DSToken"
+                    }
+                  },
+                  "visibility": "internal"
+                }
+              ],
+              "src": "828:13:28"
+            },
+            "returnParameters": {
+              "id": 32513,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "849:0:28"
+            },
+            "scope": 32528,
+            "stateMutability": "nonpayable",
+            "virtual": false,
+            "visibility": "public"
+          }
+        ],
+        "abstract": false,
+        "baseContracts": [],
+        "canonicalName": "GemPit",
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "fullyImplemented": true,
+        "linearizedBaseContracts": [
+          32528
+        ],
+        "name": "GemPit",
+        "nameLocation": "802:6:28",
+        "scope": 32529,
+        "usedErrors": [],
+        "usedEvents": []
+      }
+    ]
+  },
+  "id": 28
+}

@@ -1,0 +1,30 @@
+[compiler.solc]
+via_IR = true
+include_paths = [
+    "lib"
+]
+optimizer.enabled = true
+optimizer.runs = 1_000_000
+remappings = [
+    "@ERC20/=src/erc-20/",
+    "@ERC4626/=src/erc-4626/",
+    "@gauges/=src/gauges/",
+    "@hermes/=src/hermes/",
+    "@lib/=lib/",
+    "@maia/=src/maia/",
+    "@omni/=src/ulysses-omnichain/",
+    "@openzeppelin/contracts/=lib/openzeppelin-contracts/contracts/",
+    "@rewards/=src/rewards/",
+    "@talos/=src/talos/",
+    "@test/=test/",
+    "@ulysses-amm/=src/ulysses-amm/",
+    "@uniswap/v3-core/contracts/=lib/v3-core/contracts/",
+    "@uniswap/v3-periphery/contracts/=lib/v3-periphery/contracts/",
+    "@v3-staker/=src/uni-v3-staker/",
+    "ds-test/=lib/forge-std/lib/ds-test/src/",
+    "forge-std/=lib/forge-std/src/",
+    "solady/=lib/solady/src/",
+    "solmate/=lib/solmate/src/",
+    "v3-core/=lib/v3-core/contracts/",
+    "v3-periphery/=lib/v3-periphery/contracts/",
+]

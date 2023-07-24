@@ -1,0 +1,33 @@
+[profile.default]
+src = 'src'
+out = 'out'
+libs = ['lib']
+solc = "0.8.20"
+remappings = ["forge-std/=lib/forge-std/src","@openzeppelin-contracts/=lib/openzeppelin-contracts/","@openzeppelin/=lib/openzeppelin-contracts/","solmate/=lib/solmate","erc1363/=lib/erc1363-payable-token"]
+sender = '0x00a329c0648769a73afac7f9381e08fb43dbea72'         # the address of `msg.sender` in tests
+tx_origin = '0x00a329c0648769a73afac7f9381e08fb43dbea72'      # the address of `tx.origin` in tests
+# via_ir = true
+
+# Necessary for testing
+gas_price = 10000
+
+[fuzz]
+# Number of Fuzz runs to perform
+# runs = 1000 # default = 256
+
+[invariant]
+runs = 2000
+depth = 25
+fail_on_revert = false
+call_override = false
+dictionary_weight = 80
+include_storage = true
+include_push_bytes = true
+
+# Number of Invariant runs to perform
+# runs = 50 # default = 256
+
+# Number of runs to perform per Invariant run
+# depth = 75 # default = 15
+
+# See more config options https://github.com/foundry-rs/foundry/tree/master/config

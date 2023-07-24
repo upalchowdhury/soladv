@@ -11,6 +11,8 @@ import {Token2} from "./Token2.sol";
 import "../src/Amm.sol";
 //import {IERC20} from "@openzeppelin-contracts/contracts/token/ERC20/IERC20.sol";
 
+import {Handler} from "./Handler.sol";
+
 
 
 contract ContractTest is Test {
@@ -18,6 +20,7 @@ contract ContractTest is Test {
    Token1 token0;
    Token2 token1;
    AMM amm;
+   Handler handler;
 
     
     address alice_user1 = vm.addr(0x1);
@@ -42,6 +45,15 @@ contract ContractTest is Test {
         token1.transfer(bob_user2,12000);
 
         amm = new AMM(address(token0), address(token1));
+        handler = new Handler(amm);
+
+        bytes4[] memory selectors = new bytes4[](2);
+        selectors[0] = Handler.addLiquidity.selector;
+        selectors[1] = Handler.swap.selector;
+
+        targetSelector(FuzzSelector({addr: address(handler), selectors: selectors}));
+
+        targetContract(address(handler));
        
        
     }
@@ -111,6 +123,14 @@ contract ContractTest is Test {
     }
 
 
+
+
+    function invariant_liquidityDeposits() public {
+        assertEq(
+            token0.balanceOf(address(amm)),
+            handler.LiqPair.token0()
+        );
+    }
 
 
 
