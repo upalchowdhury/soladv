@@ -123,6 +123,8 @@ contract Loantest is Test, DSMath {
 
     function testInitialTokenBalance() public {
 
+        gem.mint(6 ether);
+
         //Verify initial token balances
         assertEq(gem.balanceOf(address(this)), 6 ether);
         assertEq(gem.balanceOf(address(tub)), 0 ether);
@@ -131,6 +133,24 @@ contract Loantest is Test, DSMath {
         assert(!tub.off());
 
     }
+
+    // Fuzzing
+    function testInitialTokenBalanceFuzz(uint data,uint data2, uint data3) public {
+        data = bound(data,1,10000);
+        data2 = bound(data2,1,2000);
+        data3 = bound(data3,3,800);
+
+        gem.mint(data);
+
+        //Verify initial token balances
+        assertEq(gem.balanceOf(address(this)), data);
+        assertEq(gem.balanceOf(address(tub)), 0 ether);
+        assertEq(skr.totalSupply(), 0 ether);
+
+        assert(!tub.off());
+
+    }
+
 
 
     function testPie() public {
