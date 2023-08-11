@@ -14,10 +14,11 @@
   },
   "dependencies": {
     "@nomiclabs/hardhat-waffle": "^2.0.5",
+    "big-integer": "^1.6.51",
     "chai": "^4.3.7",
     "circom_tester": "^0.0.19",
     "circomlib": "^2.0.5",
-    "circomlibjs": "^0.1.7",
+    "circomlibjs": "^0.0.8",
     "fs": "^0.0.1-security",
     "mocha": "^10.2.0",
     "snarkjs": "^0.6.10"
